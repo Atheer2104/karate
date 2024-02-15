@@ -10,7 +10,9 @@ Name: Karate-core (only) group 8
 
 URL: https://github.com/karatelabs/karate/tree/master/karate-core
 
-One or two sentences describing it
+### Description
+
+this project combines various features into one project such as API-test automation, mocks, performance testing and also UI automation, but we are only going to consider the karate-core part of the project
 
 ## Onboarding experience
 
