@@ -6,9 +6,9 @@ has to be delivered in a standard, cross-platform format.
 
 ## Project
 
-Name:
+Name: Karate-core (only) group 8 
 
-URL:
+URL: https://github.com/karatelabs/karate/tree/master/karate-core
 
 One or two sentences describing it
 
