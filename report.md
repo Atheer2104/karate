@@ -16,13 +16,27 @@ this project combines various features into one project such as API-test automat
 
 ## Onboarding experience
 
-Did it build and run as documented?
-    
-See the assignment for details; if everything works out of the box,
-there is no need to write much here. If the first project(s) you picked
-ended up being unsuitable, you can describe the "onboarding experience"
-for each project, along with reason(s) why you changed to a different one.
+In general, the onboarding experience with this project was really good everything worked from the get-go, and there were no problems with the installation of dependencies, compiling the project or running the tests. However, the project lacked documentation on the distinction between the users who are going to use the project and those who want to contribute to the project.
 
+### Did you have to install a lot of additional tools to build the software?
+
+No we didn't have to install any additional tool expect maven to both build and and run test for the project
+
+### Were those tools well documented?
+
+Since the only tools required was essentially maven and maven has great documentation of how to use it, so yes we would say that the tools were well documentated 
+
+### Were other components installed automatically by the build script?
+
+Yes there were lot of dependencies defined in the pom.xml in the karate-core project and these were automatically installed using maven
+
+### Did the build conclude automatically without errors?
+
+Yes the build just worked without any problem 
+
+### How well do examples and tests run on your system(s)?
+
+The test ran without any problems and failures, and we didn't have any problems with running the provided examples which are on the /examples folder
 
 ## Complexity
 
