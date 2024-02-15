@@ -40,6 +40,28 @@ The test ran without any problems and failures, and we didn't have any problems 
 
 ## Complexity
 
+### the 10 functions with high cyclomatic complexity number (ccn) 
+
+#### done by: Mert Demirsü
+1. ServerContext::getMember@532-606@./src/main/java/com/intuit/karate/http/ServerContext.java
+2. Request::getMember@531-597@./src/main/java/com/intuit/karate/http/Request.java
+
+#### done by: Melissa Mazura
+4. HttpRequestBuilder::getMember@610-646@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
+5. HttpRequestBuilder::buildInternal@167-235@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
+
+#### done by: Marcus Odin
+7. JsonUtils::recurseJsonString@282-355@./src/main/java/com/intuit/karate/JsonUtils.java
+8. ScenarioEngine::recurseEmbeddedExpressions@1430-1503@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
+
+#### done by: Atheer Salim
+10. ScenarioEngine::evalKarateExpression@2160-2240@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
+11. ScenarioIterator::tryAdvance@68-166@./src/main/java/com/intuit/karate/core/ScenarioIterator.java
+
+#### done by: Jonatan Tuvstedt
+12. ApacheHttpClient::invoke@264-347@./src/main/java/com/intuit/karate/http/ApacheHttpClient.java
+13. ScenarioEngine::match@1788-1843@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
+  
 1. What are your results for ten complex functions?
    * Did all methods (tools vs. manual count) get the same result?
    * Are the results clear?
