@@ -40,7 +40,7 @@ The test ran without any problems and failures, and we didn't have any problems 
 
 ## Complexity
 
-### the 10 functions with high cyclomatic complexity number (ccn) 
+### the 5 functions with high cyclomatic complexity number (ccn) 
 
 #### done by: Mert Demirsü
 1. ServerContext::getMember@532-606@./src/main/java/com/intuit/karate/http/ServerContext.java
@@ -59,8 +59,18 @@ The test ran without any problems and failures, and we didn't have any problems 
 11. ScenarioIterator::tryAdvance@68-166@./src/main/java/com/intuit/karate/core/ScenarioIterator.java
 
 #### done by: Jonatan Tuvstedt
-12. ApacheHttpClient::invoke@264-347@./src/main/java/com/intuit/karate/http/ApacheHttpClient.java
 13. ScenarioEngine::match@1788-1843@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
+    1. When comparing the manual count (CC of 20) to that of Lizard (CC of 21) they are almost the same, being one different. I found the calculation to be quite clearcut so maybe Lizard has a slightly different formula than the one in the slides counting `if`, `while`, `||`, `&&`, `return` and `throw`, but I didn't manage to find how the count their CC.
+        - if = 9
+        - || = 5
+        - && = 6
+        - return = 2
+        - throw = 0
+    2. The function is not very long, having a NLOC of only 46. In fact most of the CC comes from just 2 very long if statements with 6 respectively 7 predicates.
+    3. As there is no function level documentation for this function discerning the purpose is not super easy. The general purpose seems to be a step in the process of matching a string of a specific type to a expected result. This purpose is intimately linked with the high CC as almost all the complexly comes from if statements different eventualities of how the input strings are formatted. And the complexity of this function is actually even higher as almost all predicates in these if statements are functions making further checks on the string format.
+    4. This function does not have any try catch statements that Lizard could take into account.
+    5. No, the documentation of the function is quite minimal. While there are comments explaining some of the process, the actual overall purpose and outcome is not explained. And this combined with the fact that both return statements are further function calls makes the function hard to get an understanding of.
+
   
 1. What are your results for five complex functions?
    * Did all methods (tools vs. manual count) get the same result?
