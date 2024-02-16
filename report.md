@@ -62,7 +62,7 @@ The test ran without any problems and failures, and we didn't have any problems 
 12. ApacheHttpClient::invoke@264-347@./src/main/java/com/intuit/karate/http/ApacheHttpClient.java
 13. ScenarioEngine::match@1788-1843@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
   
-1. What are your results for ten complex functions?
+1. What are your results for five complex functions?
    * Did all methods (tools vs. manual count) get the same result?
    * Are the results clear?
 2. Are the functions just complex, or also long?
