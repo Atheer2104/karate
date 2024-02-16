@@ -114,6 +114,12 @@ its output?
 
 ### Evaluation
 
+#### Jonatan Tuvstedt
+Coverage result before new tests: [true, true, false, true, true, false, true, true, false, true, true, true, true, false, true, true, true, true] = 14/18 branches taken ~ 78% coverage
+1. As the instrumentation is done manually it should not be a problem to add probes to ternary operators. I also think it should be possible to manually add a probes for exceptions.
+2. It is hugely limited as it completely relies on manual labour to check coverage and any changes to the code would result in having to redo some or all of the probes. Finally another limitation is that the changes made to introduce the probes causes some unrelated tests to fail.
+3. 
+
 1. How detailed is your coverage measurement?
 
 2. What are the limitations of your own tool?
