@@ -6,11 +6,17 @@ import com.intuit.karate.StringUtils;
 import com.intuit.karate.TestUtils;
 import com.intuit.karate.graal.JsValue;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.*;
+
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
 
 /**
  * @author pthomas3
@@ -20,6 +26,19 @@ public class ScenarioEngineTest {
     static final Logger logger = LoggerFactory.getLogger(ScenarioEngineTest.class);
 
     ScenarioEngine engine;
+
+    @BeforeAll
+    public static void setUp(){
+        AdHocCoverage.visited = new boolean[18];
+    }
+
+    @AfterAll
+    public static void result() throws IOException{
+            BufferedWriter writer = new BufferedWriter(new FileWriter("adHocResult.txt"));
+            writer.write(Arrays.toString(AdHocCoverage.visited));
+            
+            writer.close();
+    }
 
     @BeforeEach
     void beforeEach() {

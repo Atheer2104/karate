@@ -71,6 +71,8 @@ import java.util.stream.Stream;
 import org.graalvm.polyglot.proxy.ProxyExecutable;
 import org.slf4j.LoggerFactory;
 
+import com.intuit.karate.core.AdHocCoverage;
+
 /**
  *
  * @author pthomas3
@@ -1788,24 +1790,48 @@ public class ScenarioEngine {
     public Match.Result match(Match.Type matchType, String expression, String path, String rhs) {
         String name = StringUtils.trimToEmpty(expression);
         if (isDollarPrefixedJsonPath(name) || isXmlPath(name)) { // 
+            // id1
+            AdHocCoverage.visited[0] = true;
             path = name;
             name = RESPONSE;
+        } else {
+            // id2
+            AdHocCoverage.visited[1] = true;
         }
         if (name.startsWith("$")) { // in case someone used the dollar prefix by mistake on the LHS
+            // id3
+            AdHocCoverage.visited[2] = true;
             name = name.substring(1);
+        }else {
+            // id4
+            AdHocCoverage.visited[3] = true;
         }
         path = StringUtils.trimToNull(path);
         if (path == null) {
+            // id5
+            AdHocCoverage.visited[4] = true;
             if (name.startsWith("(")) { // edge case, eval entire LHS
                 path = "$";
+                // id6
+                AdHocCoverage.visited[5] = true;
             } else {
                 StringUtils.Pair pair = parseVariableAndPath(name);
                 name = pair.left;
                 path = pair.right;
+                // id7
+                AdHocCoverage.visited[6] = true;
             }
+        }else {
+            // id8
+            AdHocCoverage.visited[7] = true;
         }
         if ("header".equals(name)) { // convenience shortcut for asserting against response header
+            // id9
+            AdHocCoverage.visited[8] = true;
             return matchHeader(matchType, path, rhs);
+        }else {
+            // id10
+            AdHocCoverage.visited[9] = true;
         }
         Variable actual;
         // karate started out by "defaulting" to JsonPath on the LHS of a match so we have this kludge
@@ -1819,22 +1845,39 @@ public class ScenarioEngine {
         if (isXmlPathFunction(path)
                 || (!name.startsWith("(") && !path.endsWith(")") && !path.contains(")."))
                 && (isDollarPrefixed(path) || isJsonPath(path) || isXmlPath(path))) {
+            // id11
+            AdHocCoverage.visited[10] = true;
             actual = evalKarateExpression(name);
             // edge case: java property getter, e.g. "driver.cookies"
             if (!actual.isMap() && !actual.isList() && !isXmlPath(path) && !isXmlPathFunction(path)) {
+                // id12
+                AdHocCoverage.visited[11] = true;
                 actual = evalKarateExpression(expression); // fall back to JS eval of entire LHS
                 path = "$";
+            }else {
+                // id13
+                AdHocCoverage.visited[12] = true;
             }
         } else {
+            // id14
+            AdHocCoverage.visited[13] = true;
             actual = evalKarateExpression(expression); // JS eval of entire LHS
             path = "$";
         }
         if ("$".equals(path) || "/".equals(path)) {
+            // id15
+            AdHocCoverage.visited[14] = true;
             // we have eval-ed the entire LHS, so proceed to match RHS to "$"
         } else {
+            // id16
+            AdHocCoverage.visited[15] = true;
             if (isDollarPrefixed(path)) { // json-path
+                // id17
+                AdHocCoverage.visited[16] = true;
                 actual = evalJsonPath(actual, path);
             } else { // xpath
+                // id18
+                AdHocCoverage.visited[17] = true;
                 actual = evalXmlPath(actual, path);
             }
         }
