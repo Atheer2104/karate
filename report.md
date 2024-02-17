@@ -130,6 +130,25 @@ its output?
 
 3. Are the results of your tool consistent with existing coverage tools?
 
+#### Atheer Salim 3.5.1 DIY
+1. What is the quality of your own coverage measurement? Does it take into account ternary operators (condition ? yes : no)
+   and exceptions, if available in your language?
+The quality of the coverage measurement is accurate and correct since we are doing manual instrumentation we just to check and make sure that each
+branch for a branch when it's evaluated to true and false we take not of that and mark it. Since the function that I'm analyzing does not have any ternary
+operator means it does not consider them, but if the function would have a ternary operator then, it would probably had to be rewritten to a normal if/else 
+because evaluates one expression, which is cumbersome and error-prone
+
+2. What are the limitations of your tool?  How would the instrumentation change if you modify the program?
+My tool again is manual instrumentation so it's very limited because nothing happens automatically everything has to be done manually, so if the method would be
+changed then I would have to make sure that the manual instrumentation is correct and upto date, which is very bad since it has zero flexibility.
+
+3. if you have an automated tool, are your results consistent with the ones produced by existing tool(s)?
+I have used jacoco and does not show a branch coverage percentage for a specific function but in the IDE it highlight that certain paths has been executed which
+is inline with what the manual instrumentation reported which was roughly 63% were out of 27 total branch paths, 17 was reached. 
+
+
+
+
 ## Coverage improvement
 
 Show the comments that describe the requirements for the coverage.
