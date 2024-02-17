@@ -320,7 +320,7 @@ public class ScenarioEngineTest {
     }
 
     @Test
-    void testAtheer() {
+    void testCall() {
         engine.evalJs("var inputs = [5, 4, 2, 0]");
         engine.evalJs("function foo(array) { \n" +
                 "    var sum = 0;\n" +
@@ -335,7 +335,7 @@ public class ScenarioEngineTest {
     }
 
     @Test
-    void test2Atheer() {
+    void testCallOnce() {
         engine.evalJs("var inputs = [52, 1, -51]");
         engine.evalJs("function foo(array) { \n" +
                 "    var sum = 0;\n" +
