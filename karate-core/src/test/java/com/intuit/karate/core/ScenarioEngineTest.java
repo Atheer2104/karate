@@ -6,9 +6,17 @@ import com.intuit.karate.StringUtils;
 import com.intuit.karate.TestUtils;
 import com.intuit.karate.graal.JsValue;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
+
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,6 +28,29 @@ public class ScenarioEngineTest {
     static final Logger logger = LoggerFactory.getLogger(ScenarioEngineTest.class);
 
     ScenarioEngine engine;
+
+    @BeforeAll
+    public static void setUp() {
+        BranchCoverage.branchVisited = new boolean[27];
+    }
+
+    @AfterAll
+    public static void showBranchCoverage() throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("atheer_branchCoverage_result"));
+        int totalBranchesCovered = 0;
+        for (int i = 0; i < BranchCoverage.branchVisited.length; i++) {
+            bufferedWriter.write("Branch ID: " + i + " Covered: " + BranchCoverage.branchVisited[i] + "\n");
+            if (BranchCoverage.branchVisited[i]) {
+                totalBranchesCovered++;
+            }
+        }
+
+        bufferedWriter.write("branches covered %: " +  ((float) totalBranchesCovered/(float) BranchCoverage.branchVisited.length) + "\n");
+
+        bufferedWriter.close();
+    }
+
+
 
     @BeforeEach
     void beforeEach() {
