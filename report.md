@@ -56,7 +56,27 @@ The test ran without any problems and failures, and we didn't have any problems 
 
 #### done by: Atheer Salim
 10. ScenarioEngine::evalKarateExpression@2160-2240@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
-11. ScenarioIterator::tryAdvance@68-166@./src/main/java/com/intuit/karate/core/ScenarioIterator.java
+    1. The manual count of CC for this function was computed to be 23 which is one more than what the lizard tool computed it to be, which was 22. 
+    I think the computation of the cyclomatic complexity is straight forward there were good instructions on how do it, but depending on the function, 
+    and it's structure it can be harder to compute it via pen and paper since it's error-prone. My computation is as follows  
+    Decision points:
+       ||: 1, 2, 3
+       if: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+       &&: 1,
+       else-if: 1, 2, 3, 4, 5, 6, 7,
+       return (none last return): 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    Exit points: 
+      10
+    CC = Decision points - Exit Points + 2 = 23
+    2. This functions has quite a high NLOC of 71, but I think the main reason this function has a high CC is because that it has many if/else-if/else
+    statements.
+    3. The purpose of this function is to evaluate any possible karate expression, it has to do a lot of things such as parsing the expression
+    and evaluating them, it can evaluate Js, Json and XML. This function lies in at the heart for this testing library because the testing code that the 
+    user writes is using the custom karate language. Since this function performs the actual evaluation of these expression, 
+    it makes sense that this function has high CC,
+    4. This function does not throw anything therefore, it won't affect when lizard is used to compute the CC for this function. 
+    5. No, there is no documentation for this function at all which actually makes hard for potential contributors to understand what it actually
+    does. The function has a good name but that is still not enough one has to perform manually code review to understands the different parts of the function.
 
 #### done by: Jonatan Tuvstedt
 12. ApacheHttpClient::invoke@264-347@./src/main/java/com/intuit/karate/http/ApacheHttpClient.java
