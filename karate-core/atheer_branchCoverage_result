@@ -2,9 +2,9 @@ Branch ID: 0 Covered: true
 Branch ID: 1 Covered: true
 Branch ID: 2 Covered: true
 Branch ID: 3 Covered: true
-Branch ID: 4 Covered: false
-Branch ID: 5 Covered: false
-Branch ID: 6 Covered: false
+Branch ID: 4 Covered: true
+Branch ID: 5 Covered: true
+Branch ID: 6 Covered: true
 Branch ID: 7 Covered: false
 Branch ID: 8 Covered: true
 Branch ID: 9 Covered: true
@@ -25,4 +25,4 @@ Branch ID: 23 Covered: false
 Branch ID: 24 Covered: true
 Branch ID: 25 Covered: true
 Branch ID: 26 Covered: true
-branches covered %: 0.6296296
+branches covered %: 0.7407407

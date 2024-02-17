@@ -320,6 +320,36 @@ public class ScenarioEngineTest {
     }
 
     @Test
+    void testAtheer() {
+        engine.evalJs("var inputs = [5, 4, 2, 0]");
+        engine.evalJs("function foo(array) { \n" +
+                "    var sum = 0;\n" +
+                "    for (var i = 0; i < array.length; i++) {\n" +
+                "        sum += array[i]\n" +
+                "    }\n" +
+                "    return sum\n" +
+                "}");
+        Variable value = engine.evalKarateExpression("call foo inputs");
+
+        matchEquals(String.valueOf(value.getAsInt()), "11");
+    }
+
+    @Test
+    void test2Atheer() {
+        engine.evalJs("var inputs = [52, 1, -51]");
+        engine.evalJs("function foo(array) { \n" +
+                "    var sum = 0;\n" +
+                "    for (var i = 0; i < array.length; i++) {\n" +
+                "        sum += array[i]\n" +
+                "    }\n" +
+                "    return sum\n" +
+                "}");
+        Variable value = engine.evalKarateExpression("callonce foo inputs");
+
+        matchEquals(String.valueOf(value.getAsInt()), "2");
+    }
+
+    @Test
     void testMatchObjectsReturnedFromJs() {
         assign("fun", "function(){ return { foo: 'bar' } }");
         assign("json", "{ foo: 'bar' }");
