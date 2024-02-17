@@ -71,6 +71,8 @@ import java.util.stream.Stream;
 import org.graalvm.polyglot.proxy.ProxyExecutable;
 import org.slf4j.LoggerFactory;
 
+import com.intuit.karate.core.BranchCoverage;
+
 /**
  *
  * @author pthomas3
@@ -2160,79 +2162,173 @@ public class ScenarioEngine {
     public Variable evalKarateExpression(String text, boolean forMatch) {
         text = StringUtils.trimToNull(text);
         if (text == null) {
+            //ID 0
+            BranchCoverage.branchVisited[0] = true;
+
             return Variable.NULL;
+        }else {
+            //ID 1
+            BranchCoverage.branchVisited[1] = true;
         }
+
+
         // don't re-evaluate if this is clearly a direct reference to a variable
         // this avoids un-necessary conversion of xml into a map in some cases
         // e.g. 'Given request foo' - where foo is a Variable of type XML      
         if (JS.bindings.hasMember(text)) {
+            //ID 2
+            BranchCoverage.branchVisited[2] = true;
+
             return new Variable(JS.get(text));
+        } else {
+            //ID 3
+            BranchCoverage.branchVisited[3] = true;
         }
+
+
         boolean callOnce = isCallOnceSyntax(text);
         if (callOnce || isCallSyntax(text)) { // special case in form "callBegin foo arg"
+            //ID 4
+            BranchCoverage.branchVisited[4] = true;
+
             if (callOnce) {
+                //ID 5
+                BranchCoverage.branchVisited[5] = true;
+
                 text = text.substring(9);
             } else {
+                //ID 6
+                BranchCoverage.branchVisited[6] = true;
+
                 text = text.substring(5);
             }
+
             return call(callOnce, text, false);
         } else if (isDollarPrefixedJsonPath(text)) {
+            //ID 7
+            BranchCoverage.branchVisited[7] = true;
+
             return evalJsonPathOnVariableByName(RESPONSE, text);
         } else if (isGetSyntax(text) || isDollarPrefixed(text)) { // special case in form
+            //ID 8
+            BranchCoverage.branchVisited[8] = true;
+
             // get json[*].path
             // $json[*].path
             // get /xml/path
             // get xpath-function(expression)
             int index = -1;
+
             if (text.startsWith("$")) {
+                //ID 9
+                BranchCoverage.branchVisited[9] = true;
+
                 text = text.substring(1);
             } else if (text.startsWith("get[")) {
+                //ID 10
+                BranchCoverage.branchVisited[10] = true;
+
                 int pos = text.indexOf(']');
                 index = Integer.valueOf(text.substring(4, pos));
                 text = text.substring(pos + 2);
             } else {
+                //ID 11
+                BranchCoverage.branchVisited[11] = true;
+
                 text = text.substring(4);
             }
+
             String left;
             String right;
+
             if (isDollarPrefixedJsonPath(text)) { // edge case get[0] $..foo
+                //ID 12
+                BranchCoverage.branchVisited[12] = true;
+
                 left = RESPONSE;
                 right = text;
             } else if (isVariableAndSpaceAndPath(text)) {
+                //ID 13
+                BranchCoverage.branchVisited[13] = true;
+
                 int pos = text.indexOf(' ');
                 right = text.substring(pos + 1);
                 left = text.substring(0, pos);
             } else {
+                //ID 14
+                BranchCoverage.branchVisited[14] = true;
+
                 StringUtils.Pair pair = parseVariableAndPath(text);
                 left = pair.left;
                 right = pair.right;
             }
+
             Variable sv;
+
             if (isXmlPath(right) || isXmlPathFunction(right)) {
+                //ID 15
+                BranchCoverage.branchVisited[15] = true;
+
                 sv = evalXmlPathOnVariableByName(left, right);
             } else {
+                //ID 16
+                BranchCoverage.branchVisited[16] = true;
+
                 sv = evalJsonPathOnVariableByName(left, right);
             }
+
             if (index != -1 && sv.isList()) {
+                //ID 17
+                BranchCoverage.branchVisited[17] = true;
+
                 List list = sv.getValue();
                 if (!list.isEmpty()) {
+                    //ID 18
+                    BranchCoverage.branchVisited[18] = true;
+
                     return new Variable(list.get(index));
+                } else {
+                    //ID 19
+                    BranchCoverage.branchVisited[19] = true;
                 }
+            } else {
+                //ID 20
+                BranchCoverage.branchVisited[20] = true;
             }
+
             return sv;
         } else if (isJson(text)) {
+            //ID 21
+            BranchCoverage.branchVisited[21] = true;
+
             Json json = Json.of(text);
             return evalEmbeddedExpressions(new Variable(json.value()), forMatch);
         } else if (isXml(text)) {
+            //ID 22
+            BranchCoverage.branchVisited[22] = true;
+
             Document doc = XmlUtils.toXmlDoc(text, config.isXmlNamespaceAware());
             return evalEmbeddedExpressions(new Variable(doc), forMatch);
         } else if (isXmlPath(text)) {
+            //ID 23
+            BranchCoverage.branchVisited[23] = true;
+
             return evalXmlPathOnVariableByName(RESPONSE, text);
         } else {
+            //ID 24
+            BranchCoverage.branchVisited[24] = true;
+
             // old school function declarations e.g. function() { } need wrapping in graal
             if (isJavaScriptFunction(text)) {
+                //ID 25
+                BranchCoverage.branchVisited[25] = true;
+
                 text = "(" + text + ")";
+            } else {
+                //ID 26
+                BranchCoverage.branchVisited[26] = true;
             }
+
             // js expressions e.g. foo, foo(bar), foo.bar, foo + bar, foo + '', 5, true
             // including arrow functions e.g. x => x + 1
             return evalJs(text);
