@@ -319,6 +319,7 @@ public class ScenarioEngineTest {
         matchEquals("json.nope", "'##string'");
     }
 
+    // this test visits branches with (IDs) 4,6
     @Test
     void testCall() {
         engine.evalJs("var inputs = [5, 4, 2, 0]");
@@ -334,6 +335,7 @@ public class ScenarioEngineTest {
         matchEquals(String.valueOf(value.getAsInt()), "11");
     }
 
+    // this test visits branches with (IDs) 4,5
     @Test
     void testCallOnce() {
         engine.evalJs("var inputs = [52, 1, -51]");
