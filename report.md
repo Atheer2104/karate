@@ -100,6 +100,14 @@ Carried out refactoring (optional, P+):
 
 git diff ...
 
+### Atheer Salim - src/main/java/com.intuit.karate/core/ScenarioEngine.java - (function) evalKarateExpression
+I would say the complexity of this function is necessary as the way it is currently, because as specified this function has to parse and be able to evaluate
+any karate expression. Because of this, the function requires many if/else-if/else statements to handle the respective parts. I think the function is actually
+well written in the sense that whenever possible it does the necessary parsing and directly calls the respective target function. You could if you want split the
+function into smaller parts, but I don't think that would be a good idea since in order to understand this function one would have to jump around the code, and
+it would not bring any benefits. I'd rather have the function be longer and have everything in the same place, it makes it easier to actually understand what is
+happening.
+
 ## Coverage
 
 ### Tools
@@ -125,43 +133,54 @@ its output?
 ### Evaluation
 
 1. How detailed is your coverage measurement?
-
 2. What are the limitations of your own tool?
-
 3. Are the results of your tool consistent with existing coverage tools?
 
 #### Atheer Salim 3.5.1 DIY
-1. What is the quality of your own coverage measurement? Does it take into account ternary operators (condition ? yes : no)
-   and exceptions, if available in your language?
+1. **What is the quality of your own coverage measurement? Does it take into account ternary operators (condition ? yes : no) 
+    and exceptions, if available in your language?**
+
 The quality of the coverage measurement is accurate and correct since we are doing manual instrumentation we just to check and make sure that each
 branch for a branch when it's evaluated to true and false we take not of that and mark it. Since the function that I'm analyzing does not have any ternary
 operator means it does not consider them, but if the function would have a ternary operator then, it would probably had to be rewritten to a normal if/else 
 because evaluates one expression, which is cumbersome and error-prone
 
-2. What are the limitations of your tool?  How would the instrumentation change if you modify the program?
+2. **What are the limitations of your tool?  How would the instrumentation change if you modify the program?**
+
 My tool again is manual instrumentation so it's very limited because nothing happens automatically everything has to be done manually, so if the method would be
 changed then I would have to make sure that the manual instrumentation is correct and upto date, which is very bad since it has zero flexibility.
 
-3. if you have an automated tool, are your results consistent with the ones produced by existing tool(s)?
+3. **if you have an automated tool, are your results consistent with the ones produced by existing tool(s)?** 
+
 I have used jacoco and does not show a branch coverage percentage for a specific function but in the IDE it highlight that certain paths has been executed which
-is inline with what the manual instrumentation reported which was roughly 63% were out of 27 total branch paths, 17 was reached. 
-
-
+is inline with what the manual instrumentation reported which was roughly 63% were out of 27 total branch paths, 17 was reached.
 
 
 ## Coverage improvement
 
 Show the comments that describe the requirements for the coverage.
 
-Report of old coverage: [link]
+### Report of old coverage
 
-Report of new coverage: [link]
+#### Atheer Salim
+[link](https://github.com/DD2480-group8-VT24/karate/blob/atheer_adhoc/karate-core/atheer_branchCoverage_result)
 
-Test cases added:
+### Report of new coverage
+
+#### Atheer Salim 
+[link](https://github.com/DD2480-group8-VT24/karate/blob/atheer_adhoc_increased_coverage/karate-core/atheer_branchCoverage_result)
+
+### Test cases added:
 
 git diff ...
 
-Number of test cases added: two per team member (P) or at least four (P+).
+#### Atheer Salim
+
+git diff atheer_adhoc_increased_coverage..atheer_adhoc
+
+### Number of test cases added: two per team member (P) or at least four (P+).
+
+Atheer Salim: 2 test cases added
 
 ## Self-assessment: Way of working
 
