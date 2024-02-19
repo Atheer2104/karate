@@ -84,9 +84,18 @@ it makes sense that this function has high CC,
 5. No, there is no documentation for this function at all which actually makes it hard for potential contributors to understand what it actually
 does. The function has a good name, but that is still not enough one has to perform manually code review to understand the different parts of the function.
 
-#### done by: Jonatan Tuvstedt
-12. ApacheHttpClient::invoke@264-347@./src/main/java/com/intuit/karate/http/ApacheHttpClient.java
-13. ScenarioEngine::match@1788-1843@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
+#### done by: Jonatan Tuvstedt ScenarioEngine.match()
+**Selected Funtion:** ScenarioEngine::match@1788-1843@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
+
+1. Doing a manual CC count for this function we both got a CC of 20, compared to a CC of 21 from Lizard. As the formula used (the one in the lecture slides) is unambiguous I assume that  Lizard uses a slightly different formula, but I didn't manage to find how the count their CC.
+
+2. The function is not very long, having a NLOC of only 46. In fact most of the CC comes from just 2 very long if statements with 6 respectively 7 predicates.
+
+3. As there is no function level documentation for this function discerning the purpose is not super easy. The general purpose seems to be a step in the process of matching a string of a specific type to a expected result. This purpose is intimately linked with the high CC as almost all the complexly comes from if statements different eventualities of how the input strings are formatted. And the complexity of this function is actually even higher as almost all predicates in these if statements are functions making further checks on the string format.
+
+4. This function does not have any try catch statements that Lizard could take into account.
+
+5. No, the documentation of the function is quite minimal. While there are comments explaining some of the process, the actual overall purpose and outcome is not explained. And this combined with the fact that both return statements are further function calls makes the function hard to get an understanding of.
   
 1. What are your results for five complex functions?
    * Did all methods (tools vs. manual count) get the same result?
