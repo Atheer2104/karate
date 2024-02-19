@@ -159,15 +159,21 @@ is inline with what the manual instrumentation reported which was roughly 63% we
 
 Show the comments that describe the requirements for the coverage.
 
-Report of old coverage: [link]
+### Report of old coverage
 
-Report of new coverage: [link]
+#### Atheer Salim [link](https://github.com/DD2480-group8-VT24/karate/blob/atheer_adhoc/karate-core/atheer_branchCoverage_result)
 
-Test cases added:
+### Report of new coverage
 
-git diff ...
+#### Atheer Salim [link](https://github.com/DD2480-group8-VT24/karate/blob/atheer_adhoc_increased_coverage/karate-core/atheer_branchCoverage_result)
 
-Number of test cases added: two per team member (P) or at least four (P+).
+### Test cases added
+
+#### Atheer Salim: ```git diff atheer_adhoc_increased_coverage..atheer_adhoc```
+
+### Number of test cases added: two per team member (P) or at least four (P+).
+
+Atheer Salim: 2 test cases added
 
 ## Self-assessment: Way of working
 
