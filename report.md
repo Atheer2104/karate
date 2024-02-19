@@ -98,12 +98,19 @@ does. The function has a good name, but that is still not enough one has to perf
 
 ## Refactoring
 
-Plan for refactoring complex code:
-
+### Plan for refactoring complex code
 Estimated impact of refactoring (lower CC, but other drawbacks?).
 
-Carried out refactoring (optional, P+):
+#### Atheer Salim - src/main/java/com.intuit.karate/core/ScenarioEngine.java - (function) evalKarateExpression
+I would say the complexity of this function is necessary as the way it is currently, because as specified this function has to parse and be able to evaluate
+any karate expression. Because of this, the function requires many if/else-if/else statements to handle the respective parts. I think the function is actually
+well written in the sense that whenever possible it does the necessary parsing and directly calls the respective target function. You could if you want split the
+function into smaller parts, but I don't think that would be a good idea since in order to understand this function one would have to jump around the code, and
+it would not bring any benefits. I'd rather have the function be longer and have everything in the same place, it makes it easier to actually understand what is
+happening.
 
+
+#### Carried out refactoring (optional, P+)
 git diff ...
 
 ## Coverage
