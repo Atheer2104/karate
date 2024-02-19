@@ -40,7 +40,7 @@ The test ran without any problems and failures, and we didn't have any problems 
 
 ## Complexity
 
-### the 10 functions with high cyclomatic complexity number (ccn) 
+### the 5 functions with high cyclomatic complexity number (ccn) 
 
 #### done by: Mert Demirsü
 1. ServerContext::getMember@532-606@./src/main/java/com/intuit/karate/http/ServerContext.java
