@@ -55,28 +55,30 @@ The test ran without any problems and failures, and we didn't have any problems 
 8. ScenarioEngine::recurseEmbeddedExpressions@1430-1503@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
 
 #### done by: Atheer Salim
-10. ScenarioEngine::evalKarateExpression@2160-2240@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
-    1. The manual count of CC for this function was computed to be 23 which is one more than what the lizard tool computed it to be, which was 22. 
-    I think the computation of the cyclomatic complexity is straight forward there were good instructions on how do it, but depending on the function, 
-    and it's structure it can be harder to compute it via pen and paper since it's error-prone. My computation is as follows  
+**Selected Funtion:** ScenarioEngine::evalKarateExpression@2160-2240@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
+
+    1. The manual count of CC for this function was computed to be 13, which is much less what the lizard tool computed it to be, which was 22.
+    Here the formula that was used was the once showcased in lecture 4, more on complexity. I think the computation of the cyclomatic complexity 
+    is straight forward, but depending on the function and its structure, it can be harder to compute it via pen and paper since it's error-prone.
+    I also don't exactly know how the lizard tool got 22, that is unclear.   
+    My computation is as follows  
     Decision points:
-       ||: 1, 2, 3
-       if: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+       ||: 3
+       if: 17
        &&: 1,
-       else-if: 1, 2, 3, 4, 5, 6, 7,
-       return (none last return): 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
     Exit points: 
-      10
-    CC = Decision points - Exit Points + 2 = 23
-    2. This functions has quite a high NLOC of 71, but I think the main reason this function has a high CC is because that it has many if/else-if/else
+      return: 10
+      throw: 0  
+    CC = Decision Points - Exit Points + 2 = 13
+    2. This function has quite a high NLOC of 71, but I think the main reason this function has a high CC is because that it has many if/else-if/else
     statements.
     3. The purpose of this function is to evaluate any possible karate expression, it has to do a lot of things such as parsing the expression
-    and evaluating them, it can evaluate Js, Json and XML. This function lies in at the heart for this testing library because the testing code that the 
-    user writes is using the custom karate language. Since this function performs the actual evaluation of these expression, 
+    and evaluating them, it can evaluate Js, Json and XML. This function lies in at the heart of this testing library because the testing code that the 
+    user writes is using the custom karate language. Since this function performs the actual evaluation of these expressions, 
     it makes sense that this function has high CC,
-    4. This function does not throw anything therefore, it won't affect when lizard is used to compute the CC for this function. 
-    5. No, there is no documentation for this function at all which actually makes hard for potential contributors to understand what it actually
-    does. The function has a good name but that is still not enough one has to perform manually code review to understands the different parts of the function.
+    4. This function does not throw anything; therefore, it won't affect when lizard is used to compute the CC for this function. 
+    5. No, there is no documentation for this function at all which actually makes it hard for potential contributors to understand what it actually
+    does. The function has a good name, but that is still not enough one has to perform manually code review to understand the different parts of the function.
 
 #### done by: Jonatan Tuvstedt
 12. ApacheHttpClient::invoke@264-347@./src/main/java/com/intuit/karate/http/ApacheHttpClient.java
