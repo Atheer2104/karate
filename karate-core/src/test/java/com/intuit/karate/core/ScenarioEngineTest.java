@@ -127,6 +127,22 @@ public class ScenarioEngineTest {
         matchEval("['##(foo)', 2, '##(bar)']", "[2]");
     }
 
+    @Test 
+    void testRemovingLeadingDollarWorks() {
+        assign("a", "1");
+        assign("b", "2");
+        assign("myJson", "{ foo: '#(a + b)' }");
+        matchEquals("$myJson.foo", "3");
+    }
+
+    @Test 
+    void testRemovingSurroundingParenthesisWorks() {
+        assign("a", "1");
+        assign("b", "3");
+        assign("myJson", "{ foo: '#(a + b)' }");
+        matchNotEquals("(myJson.foo)", "3");
+    }
+
     @Test
     void testEmbeddedMap() {
         engine.evalJs("var foo = 2");
