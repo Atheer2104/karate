@@ -1792,11 +1792,13 @@ public class ScenarioEngine {
             name = RESPONSE;
         }
         if (name.startsWith("$")) { // in case someone used the dollar prefix by mistake on the LHS
+            // Requirement 1, testing name starting with $
             name = name.substring(1);
         }
         path = StringUtils.trimToNull(path);
         if (path == null) {
             if (name.startsWith("(")) { // edge case, eval entire LHS
+                // Requirement 2, testing name starting with (
                 path = "$";
             } else {
                 StringUtils.Pair pair = parseVariableAndPath(name);
@@ -1805,6 +1807,7 @@ public class ScenarioEngine {
             }
         }
         if ("header".equals(name)) { // convenience shortcut for asserting against response header
+            // Requirement 3, testing name being header
             return matchHeader(matchType, path, rhs);
         }
         Variable actual;
@@ -1826,6 +1829,7 @@ public class ScenarioEngine {
                 path = "$";
             }
         } else {
+            // Requirement 4, testing that a path that is neither isXmlPathFunction, isDollarPrefixed, isJsonPath nor isXmlPath still works
             actual = evalKarateExpression(expression); // JS eval of entire LHS
             path = "$";
         }
