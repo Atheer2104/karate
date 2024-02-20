@@ -59,10 +59,17 @@ The test ran without any problems and failures, and we didn't have any problems 
    - `||`: 2
    - `return`: 0
    - `throw`: 0. 
-   - **Total: 24**
+   - **Total: 24** (Also counted by Melissa)
 
    Using Lizard the result was 25 which is almist the same but one higher than my manual count. This might be a difference in how the tool counts compared how I did it manually. 
-   
+
+   2. The function has an NLOC of 74. This means that there is about 1 CC per 3 NLOC.
+
+   3. There is no function level documentation for this functions which makes it harder to dicern the purspose. It seems to take an object of a list, map or string and recursevily and convert it to a string in Json format.
+
+   4. There is no try or catch blocks in this function.
+
+   5. There is no documentation about this function other than a small comment on a single line about a special case. This makes it hard to understand how the function runs and what it does. 
 
 #### done by: Atheer Salim
 **Selected Funtion:** ScenarioEngine::evalKarateExpression@2160-2240@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
