@@ -187,6 +187,17 @@ changed then I would have to make sure that the manual instrumentation is correc
 I have used JaCoCo and it does not show a branch coverage percentage for a specific function but in the IDE it highlight that certain paths has been executed which
 is inline with what the manual instrumentation reported which was roughly 63% were out of 27 total branch paths, 17 was reached.
 
+#### Jonatan Tuvstedt
+Coverage result before new tests: [true, true, false, true, true, false, true, true, false, true, true, true, true, false, true, true, true, true] = 14/18 branches taken ~ 78% coverage.
+
+[Patch](https://github.com/DD2480-group8-VT24/karate/commit/e14ffe8ecfb29a5f8c3a63268f318583dbc8e37e) for Instrumented code or just run 
+
+`git diff e49ece113f688cb57d90f46a2ad47149fb67e59f e14ffe8ecfb29a5f8c3a63268f318583dbc8e37e`
+
+1. As the instrumentation is done manually it should not be a problem to add probes to ternary operators. I also think it should be possible to manually add a probes for exceptions. Quality wise I would say that it is optimal as it takes all possible branches into account (unless I have messed up).
+2. It is hugely limited as it completely relies on manual labour to check coverage and any changes to the code would result in having to redo some or all of the probes. Finally another limitation is that the changes made to introduce the probes causes some unrelated tests to fail.
+3. 
+
 ## Coverage improvement
 
 Show the comments that describe the requirements for the coverage.
