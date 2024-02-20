@@ -55,7 +55,24 @@ The test ran without any problems and failures, and we didn't have any problems 
 #### done by: Marcus Odin
 
 7. JsonUtils::recurseJsonString@282-355@./src/main/java/com/intuit/karate/JsonUtils.java
-8. ScenarioEngine::recurseEmbeddedExpressions@1430-1503@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
+   1.  Manual CC count for this function: 
+   - `if`: 18
+   - `while`: 2
+   - `||`: 2
+   - `return`: 0
+   - `throw`: 0. 
+   - **Total: 24** (Also counted by Melissa)
+
+   Using Lizard the result was 25 which is almist the same but one higher than my manual count. This might be a difference in how the tool counts compared how I did it manually. 
+
+   2. The function has an NLOC of 74. This means that there is about 1 CC per 3 NLOC. This feels like a high CC per line which means the function is not very long but has a high CC.
+
+   3. There is no function level documentation for this functions which makes it harder to dicern the purspose. It seems to take an object of a list, map or string and recursevily and convert it to a string in Json format.
+
+   4. There is no try or catch blocks in this function.
+
+   5. There is no documentation about this function other than a small comment on a single line about a special case. This makes it hard to understand how the function runs and what it does. 
+
 
 #### done by: Atheer Salim
 
@@ -207,6 +224,13 @@ Coverage result before new tests: [true, true, false, true, true, false, true, t
 2. It is hugely limited as it completely relies on manual labour to check coverage and any changes to the code would result in having to redo some or all of the probes. Finally another limitation is that the changes made to introduce the probes causes some unrelated tests to fail.
 3. When doing a manual inspection of the results by JaCoCo it is identical to the one found by my DIY solution.
 
+#### Marcus Odin 3.5.1 DIY
+
+10/34 branches were taken before the new tests were implemented. [link](https://github.com/karatelabs/karate/compare/master...DD2480-group8-VT24:karate:marodi-adhoc#diff-ed7b53f024c5cc83536c8b757c24f020cc382ee59079a462fc7b3d62933682bb)
+1. There are no ternary operators in the function but it should be able to be taken into account if that was the case. The quality should be good since it is done manually.
+
+2. If you modify the program or add or remove branches for example then you would have to manually remake everything that was affected. It is also important to not accidentally affect other parts of the program just to check the coverage.
+
 ## Coverage improvement
 
 Show the comments that describe the requirements for the coverage.
@@ -219,6 +243,8 @@ Show the comments that describe the requirements for the coverage.
 
 [true, true, false, true, true, false, true, true, false, true, true, true, true, false, true, true, true, true] = 14/18 ~ 78%
 
+#### Marcus Odin [link](https://github.com/DD2480-group8-VT24/karate/blob/marodi-adhoc/karate-core/branchCoverage_result)
+
 ### Report of new coverage
 
 #### Atheer Salim [link](https://github.com/DD2480-group8-VT24/karate/blob/atheer_adhoc_increased_coverage/karate-core/atheer_branchCoverage_result)
@@ -226,6 +252,8 @@ Show the comments that describe the requirements for the coverage.
 #### Jonatan Tuvstedt
 
 [true, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, true, true] = 17/18 ~ 94%
+
+#### Marcus Odin [link](https://github.com/DD2480-group8-VT24/karate/blob/marodi_adhoc_increased_coverage/karate-core/branchCoverage_result)
 
 ### Test cases added
 
@@ -245,11 +273,17 @@ The branches that were untested in ScenarioEngine.match are as follows:
 
 My tests addresses 1 (`testRemovingLeadingDollarWorks()`), 2 and 4 (`testRemovingSurroundingParenthesisWorks()`) bringing the branch coverage up to ~ 94% for ScenarioEngine.match()
 
+#### Marcus Odin [link](https://github.com/karatelabs/karate/commit/9d18488455e4583a700953185835a5133fb008ca#diff-c01545e0cfeffbbb3776287cb80f9e7b3970bb8d2b07c96a90ee68a756661308)
+
+The tests I added were `testNull()` and `testList()`. I added these tests since the function I was working on had 3 if/else statements at the highest level but only one of them were accesed so my tests gets some coverage on the other 2 aswell.
+
 ### Number of test cases added: two per team member (P) or at least four (P+).
 
 Atheer Salim: 2 test cases added
 
 Jonatan Tuvstedt: 2 test cases added
+
+Marcus Odin: 2 test cases added
 
 ## Self-assessment: Way of working
 
