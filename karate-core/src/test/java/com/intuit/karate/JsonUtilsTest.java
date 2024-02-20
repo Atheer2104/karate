@@ -36,7 +36,7 @@ class JsonUtilsTest {
 
         @BeforeAll
     public static void setUp() {
-        Coverage.branchVisited = new boolean[23];
+        Coverage.branchVisited = new boolean[34];
     }
 
     @AfterAll

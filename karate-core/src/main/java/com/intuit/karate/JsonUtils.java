@@ -70,7 +70,7 @@ public class JsonUtils {
     }
 
     static {
-        Coverage.branchVisited = new boolean[23];
+        Coverage.branchVisited = new boolean[34];
         // ensure that even if jackson (databind?) is on the classpath, don't switch provider
         Configuration.setDefaults(new Configuration.Defaults() {
             private final JsonProvider jsonProvider = new JsonSmartJsonProvider();
@@ -306,142 +306,179 @@ public class JsonUtils {
                     Coverage.branchVisited[3] = true;
 
                     sb.append('\n');
+                } else{
+                    // ID 4
+                    Coverage.branchVisited[4] = true;
                 }
                 Iterator iterator = list.iterator();
                 while (iterator.hasNext()) {
 
-                    // ID 4
-                    Coverage.branchVisited[4] = true;
+                    // ID 5
+                    Coverage.branchVisited[5] = true;
 
                     Object child = iterator.next();
                     if (pretty) {
 
-                        // ID 5
-                        Coverage.branchVisited[5] = true;
+                        // ID 6
+                        Coverage.branchVisited[6] = true;
 
                         pad(sb, depth + 1);
+                    }
+                    else{
+                        // ID 7
+                        Coverage.branchVisited[7] = true;
                     }
                     recurseJsonString(child, pretty, sb, depth + 1, seen);
                     if (iterator.hasNext()) {
 
-                        // ID 6
-                        Coverage.branchVisited[6] = true;
+                        // ID 8
+                        Coverage.branchVisited[8] = true;
 
                         sb.append(',');
+                    }else {
+                        // ID 9
+                        Coverage.branchVisited[9] = true;
                     }
+                    
                     if (pretty) {
 
-                        // ID 7
-                        Coverage.branchVisited[7] = true;
+                        // ID 10
+                        Coverage.branchVisited[10] = true;
 
                         sb.append('\n');
+                    }else {
+                        // ID 11
+                        Coverage.branchVisited[11] = true;
                     }
                 }
-                if (pretty) {
-
-                    // ID 8
-                    Coverage.branchVisited[8] = true;
-
-                    pad(sb, depth);
-                }
-                sb.append(']');
-            } else {
-                
-                // ID 9
-                Coverage.branchVisited[9] = true;
-
-                ref(sb, o);
-            }
-        } else if (o instanceof Map) {
-
-            // ID 10
-            Coverage.branchVisited[10] = true;
-
-            Map<String, Object> map = (Map<String, Object>) o;
-            if (map.isEmpty() || seen.add(o)) {
-
-                // ID 11
-                Coverage.branchVisited[11] = true;
-
-                sb.append('{');
                 if (pretty) {
 
                     // ID 12
                     Coverage.branchVisited[12] = true;
 
+                    pad(sb, depth);
+                }else {
+                    // ID 13
+                    Coverage.branchVisited[13] = true;
+                }
+                sb.append(']');
+            } else {
+                
+                // ID 14
+                Coverage.branchVisited[14] = true;
+
+                ref(sb, o);
+            }
+        } else if (o instanceof Map) {
+
+            // ID 15
+            Coverage.branchVisited[15] = true;
+
+            Map<String, Object> map = (Map<String, Object>) o;
+            if (map.isEmpty() || seen.add(o)) {
+
+                // ID 16
+                Coverage.branchVisited[16] = true;
+
+                sb.append('{');
+                if (pretty) {
+
+                    // ID 17
+                    Coverage.branchVisited[17] = true;
+
                     sb.append('\n');
-                }                
+                }else {
+                    // ID 18
+                    Coverage.branchVisited[18] = true;
+                }  
                 Iterator<Map.Entry<String, Object>> iterator = map.entrySet().iterator();
                 while (iterator.hasNext()) {
 
-                    // ID 13
-                    Coverage.branchVisited[13] = true;
+                    // ID 19
+                    Coverage.branchVisited[19] = true;
 
                     Map.Entry<String, Object> entry = iterator.next();
                     Object key = entry.getKey(); // found a rare case where this was a boolean
                     if (pretty) {
                         
-                        // ID 14
-                        Coverage.branchVisited[14] = true;
+                        // ID 20
+                        Coverage.branchVisited[20] = true;
 
                         pad(sb, depth + 1);
+                    } else{
+                        // ID 21
+                        Coverage.branchVisited[21] = true;
                     }
                     sb.append('"').append(escapeValue(key == null ? null : key.toString())).append('"').append(':');
                     if (pretty) {
 
-                        // ID 15
-                        Coverage.branchVisited[15] = true;
+                        // ID 22
+                        Coverage.branchVisited[22] = true;
 
                         sb.append(' ');
+                    } else {
+                        // ID 23
+                        Coverage.branchVisited[23] = true;
                     }
                     recurseJsonString(entry.getValue(), pretty, sb, depth + 1, seen);
                     if (iterator.hasNext()) {
 
-                        // ID 16
-                        Coverage.branchVisited[16] = true;
+                        // ID 24
+                        Coverage.branchVisited[24] = true;
 
                         sb.append(',');
+                    } else {
+                        // ID 25
+                        Coverage.branchVisited[25] = true;
                     }
                     if (pretty) {
 
-                        // ID 17
-                        Coverage.branchVisited[17] = true;
+                        // ID 26
+                        Coverage.branchVisited[26] = true;
 
                         sb.append('\n');
+                    } else {
+                        // ID 27
+                        Coverage.branchVisited[27] = true;
                     }
+
                 }
                 if (pretty) {
 
-                    // ID 18
-                    Coverage.branchVisited[18] = true;
+                    // ID 28
+                    Coverage.branchVisited[28] = true;
 
                     pad(sb, depth);
+                }
+                else {
+                    // ID 29
+                    Coverage.branchVisited[29] = true;
                 }
                 sb.append('}');
             } else {
 
-                // ID 19
-                Coverage.branchVisited[19] = true;
+                // ID 30
+                Coverage.branchVisited[30] = true;
 
                 ref(sb, o);
             }
         } else if (o instanceof String) {
 
-            // ID 20
-            Coverage.branchVisited[20] = true;
+            // ID 31
+            Coverage.branchVisited[31] = true;
 
             String value = (String) o;
             sb.append('"').append(escapeValue(value)).append('"');
         } else if (o instanceof Number || o instanceof Boolean) {
 
-            // ID 21
-            Coverage.branchVisited[21] = true;
+            // ID 32
+            Coverage.branchVisited[32] = true;
 
             sb.append(o);
         } else { // TODO custom writers ?
 
-            // ID 22
-            Coverage.branchVisited[22] = true;
+            // ID 33
+            Coverage.branchVisited[33] = true;
             
             String value = o.toString();
             sb.append('"').append(escapeValue(value)).append('"');

@@ -160,6 +160,16 @@ its output?
 
 3. Are the results of your tool consistent with existing coverage tools?
 
+#### Marcus Odin 3.5.1 DIY
+10/34 branches were taken before the new tests were implemented.
+1. There are no ternary operators in the function but it should be able to be taken into account if that was the case. The quality should be good since it is done manually.
+
+2. If you modify the program or add or remove branches for example then you would have to manually remake everything that was affected. It is also important to not accidentally affect other parts of the program just to check the coverage.
+
+3. 
+
+
+
 #### Atheer Salim 3.5.1 DIY
 1. **What is the quality of your own coverage measurement? Does it take into account ternary operators (condition ? yes : no)
    and exceptions, if available in your language?**
