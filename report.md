@@ -292,13 +292,11 @@ Marcus Odin: 2 test cases added
 
 ## Self-assessment: Way of working
 
-Current state according to the Essence standard: ...
+In most categories we still found ourself on the same level as in lab 1, though this doesn't mean we haven't moved further in those categories, just that we still haven't reached the next level. One example of this is that we have improved quite significantly in _Working well_, but still don't feel like we apply the practices without thinking about them.
 
-Was the self-assessment unanimous? Any doubts about certain items?
+One category where we have moved further is _Principles Establishment_ where we after lab 1 doubled down and decided on some concrete principles for branch usage and a commit policy and we have moved from level 3.5 to 5.
 
-How have you improved so far?
-
-Where is potential for improvement?
+One area where we have moved backwards is _In Place_ where we for lab 1 considered that we were on level 3 as we did a lot of "how to work" discussions together. But due to some scheduling conflicts and other problems we can no longer say that the whole team has been involved in further adaptions of the way of work, which is therefore an area for improvement.
 
 ## Overall experience
 
