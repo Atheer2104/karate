@@ -47,8 +47,20 @@ The test ran without any problems and failures, and we didn't have any problems 
 2. Request::getMember@531-597@./src/main/java/com/intuit/karate/http/Request.java
 
 #### done by: Melissa Mazura
-4. HttpRequestBuilder::getMember@610-646@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
-5. HttpRequestBuilder::buildInternal@167-235@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
+**Selected Funtion:** HttpRequestBuilder::getMember@610-646@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
+1. When counting the cyclomatic complexity, this function's result was 2, whereas the Lizard tool showed 16. As the function that was used for this computation was the same as the one shown in lecture 4, it becomes clear that the function's results differ.
+The computation is as follows:
+Switch statements and the default statemtn: 16
+Return statements: 16
+CC = Decision Points - Exit Points + 2 = 2
+
+2. This function's complexity is due to its massive switch statement that it consists of, whith a rather low NLOG of 37.
+
+3. This function is used to override the getMember function. It takes a key as input - which ranges from simply METHOD to PUT, and based on that input it will return a certain function of key value. If this key does not match any of the 15 cases, it will return a warn message into the logger and will return zero. Overall, this function receives properties and responses associated with an HTTP data request.
+
+4. In this function, there are no exceptions that can be found. The only thing e have is a default case that will return zero if the input string does not match any case.
+
+5. For this function, there can be found no documentation.
 
 #### done by: Marcus Odin
 7. JsonUtils::recurseJsonString@282-355@./src/main/java/com/intuit/karate/JsonUtils.java
@@ -109,6 +121,8 @@ function into smaller parts, but I don't think that would be a good idea since i
 it would not bring any benefits. I'd rather have the function be longer and have everything in the same place, it makes it easier to actually understand what is
 happening.
 
+#### Melissa Mazura - HttpRequestBuilder::getMember@610-646@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
+This function is neccessarily as complex as it is shown in the function. Due to the nature of said function - simply to have 16 if cases in it - it does exactly what it is supposed to. Of course, we could divide the if statements into smaller ones, but I do not believe that this will either change the complexity or make it more readable in the end. The if statements all correspond to the same problem, and it would be more difficult to separate these different clauses into different functions.
 
 #### Carried out refactoring (optional, P+)
 git diff ...
@@ -142,6 +156,13 @@ its output?
 2. What are the limitations of your own tool?
 
 3. Are the results of your tool consistent with existing coverage tools?
+
+#### Atheer Salim 3.5.1 DIY
+1. My coverage tool should be fairly accurate, because it manually goes through every single branch and checks its coverage manually. If this branch is visited during the tests, this will be marked as visited, which in turn will show up on the branch coverage. 
+
+2. If the program were to change, this tool would have to change too, as it does not take into account changes. If the function changes, this tool would probably not work well anymore.
+
+3. As this function has no tests written yet, the Cobertura tool also had zero percentage coverage, which is the same as my coverage tool.
 
 #### Atheer Salim 3.5.1 DIY
 1. **What is the quality of your own coverage measurement? Does it take into account ternary operators (condition ? yes : no)
