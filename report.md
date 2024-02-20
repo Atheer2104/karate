@@ -263,6 +263,21 @@ Where is potential for improvement?
 
 ## Overall experience
 
-What are your main take-aways from this project? What did you learn?
+### What are your main take-aways from this project? What did you learn?
 
-Is there something special you want to mention here?
+One key takeaway was that doing the manual instrumentation for branch coverage was a good exercise for us since it
+showed us in practice how it works and how one could add the instrumentation. In the beginning, it sounded more difficult and scary
+than it actually was but again our instrumentation is limited since it's manual and is not performed automatically which is more challenging to implement.
+
+Another key takeaway for us was that it can be hard to start working on a new open-source project since there is a lot of time that goes
+to understand the architecture of the project, how everything is split up, where to find things, etc... Additionally for this project
+it was a bit harder to improve and increase the branch coverage mostly because the functions did not have any documentation, which
+made it harder to grasp and understand what the functions do.
+
+One thing that we learned is that it can be hard to get started working on an open-source project since it all depends on the available
+information. There can be problems with building and running the project but luckily for us this project had great documentation on how to get started and followed standard conventions which made it easy to run properly.
+
+We furthermore saw a good example of why it's important to have tests and how important they are for a project.
+
+### Is there something special you want to mention here?
+Nothing else to add here
