@@ -205,7 +205,7 @@ Coverage result before new tests: [true, true, false, true, true, false, true, t
 
 1. As the instrumentation is done manually it should not be a problem to add probes to ternary operators. I also think it should be possible to manually add a probes for exceptions. Quality wise I would say that it is optimal as it takes all possible branches into account (unless I have messed up).
 2. It is hugely limited as it completely relies on manual labour to check coverage and any changes to the code would result in having to redo some or all of the probes. Finally another limitation is that the changes made to introduce the probes causes some unrelated tests to fail.
-3.
+3. When doing a manual inspection of the results by JaCoCo it is identical to the one found by my DIY solution.
 
 ## Coverage improvement
 
