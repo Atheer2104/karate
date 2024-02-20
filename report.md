@@ -52,7 +52,17 @@ The test ran without any problems and failures, and we didn't have any problems 
 
 #### done by: Marcus Odin
 7. JsonUtils::recurseJsonString@282-355@./src/main/java/com/intuit/karate/JsonUtils.java
-8. ScenarioEngine::recurseEmbeddedExpressions@1430-1503@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
+
+   1.  Manual CC count for this function: 
+   - `if`: 18
+   - `while`: 2
+   - `||`: 2
+   - `return`: 0
+   - `throw`: 0. 
+   - **Total: 24**
+
+   Using Lizard the result was 25 which is almist the same but one higher than my manual count. This might be a difference in how the tool counts compared how I did it manually. 
+   
 
 #### done by: Atheer Salim
 **Selected Funtion:** ScenarioEngine::evalKarateExpression@2160-2240@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
