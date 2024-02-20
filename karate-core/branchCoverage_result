@@ -1,16 +1,16 @@
-Branch ID: 0 Covered: false
-Branch ID: 1 Covered: false
-Branch ID: 2 Covered: false
-Branch ID: 3 Covered: false
+Branch ID: 0 Covered: true
+Branch ID: 1 Covered: true
+Branch ID: 2 Covered: true
+Branch ID: 3 Covered: true
 Branch ID: 4 Covered: false
-Branch ID: 5 Covered: false
-Branch ID: 6 Covered: false
+Branch ID: 5 Covered: true
+Branch ID: 6 Covered: true
 Branch ID: 7 Covered: false
-Branch ID: 8 Covered: false
-Branch ID: 9 Covered: false
-Branch ID: 10 Covered: false
+Branch ID: 8 Covered: true
+Branch ID: 9 Covered: true
+Branch ID: 10 Covered: true
 Branch ID: 11 Covered: false
-Branch ID: 12 Covered: false
+Branch ID: 12 Covered: true
 Branch ID: 13 Covered: false
 Branch ID: 14 Covered: false
 Branch ID: 15 Covered: true
@@ -29,7 +29,8 @@ Branch ID: 27 Covered: true
 Branch ID: 28 Covered: false
 Branch ID: 29 Covered: true
 Branch ID: 30 Covered: true
-Branch ID: 31 Covered: false
+Branch ID: 31 Covered: true
 Branch ID: 32 Covered: false
 Branch ID: 33 Covered: false
-branches covered %: 0.29411766
+branches covered: 21/34
+branches covered %: 0.61764705

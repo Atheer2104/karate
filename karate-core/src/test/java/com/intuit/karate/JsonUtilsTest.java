@@ -7,8 +7,10 @@ import com.intuit.karate.core.Variable;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import java.io.BufferedWriter;
@@ -49,10 +51,26 @@ class JsonUtilsTest {
                 totalBranchesCovered++;
             }
         }
-
+        bufferedWriter.write("branches covered: " +  totalBranchesCovered + "/" + Coverage.branchVisited.length + "\n");
         bufferedWriter.write("branches covered %: " +  ((float) totalBranchesCovered/(float) Coverage.branchVisited.length) + "\n");
 
         bufferedWriter.close();
+    }
+
+    @Test
+    void testNull() {
+        String st = null;
+        String s = JsonUtils.toJson(st, true);
+        assertEquals("null\n", s);
+    }
+
+    @Test 
+    void testList() {
+        List<String> list = new ArrayList<String>();
+        list.add("bar");
+        list.add("foo");
+        String s = JsonUtils.toJson(list, true);
+        assertEquals("[\n  \"bar\",\n  \"foo\"\n]\n", s);
     }
 
     @Test
@@ -78,28 +96,6 @@ class JsonUtilsTest {
         Match.that(s).isEqualTo("{\"bar\":0,\"foo\":null}");
         Map<String, Object> map = Json.of(pojo).asMap();
         Match.that(map).isEqualTo("{ foo: null, bar: 0 }");
-    }
-
-    @Test
-    public void testPojoConversion() {
-        ComplexPojo pojo = new ComplexPojo();
-        pojo.setFoo("testFoo");
-        pojo.setBar(1);
-        ComplexPojo p1 = new ComplexPojo();
-        p1.setFoo("p1");
-        ComplexPojo p2 = new ComplexPojo();
-        p2.setFoo("p2");
-        pojo.setBan(Arrays.asList(p1, p2));
-        String s = JsonUtils.toJson(pojo);
-        Match.that(s).isEqualTo("{\"bar\":1,\"foo\":\"testFoo\",\"baz\":null,\"ban\":[{\"bar\":0,\"foo\":\"p1\",\"baz\":null,\"ban\":null},{\"bar\":0,\"foo\":\"p2\",\"baz\":null,\"ban\":null}]}");
-        ComplexPojo temp = (ComplexPojo) JsonUtils.fromJson(s, ComplexPojo.class.getName());
-        assertEquals(temp.getFoo(), "testFoo");
-        assertEquals(2, temp.getBan().size());
-        temp = JsonUtils.fromJson(s, ComplexPojo.class);
-        assertEquals(temp.getFoo(), "testFoo");
-        assertEquals(2, temp.getBan().size());
-        s = XmlUtils.toXml(pojo);
-        Match.that(s).isEqualTo("<root><bar>1</bar><foo>testFoo</foo><baz/><ban><bar>0</bar><foo>p1</foo><baz/><ban/></ban><ban><bar>0</bar><foo>p2</foo><baz/><ban/></ban></root>");
     }
 
     @Test
@@ -133,6 +129,28 @@ class JsonUtilsTest {
                 Variable var = new Variable(obj);
         String serialized = var.getAsString();
         assertEquals(originalString, serialized);
+    }
+
+    @Test
+    public void testPojoConversion() {
+        ComplexPojo pojo = new ComplexPojo();
+        pojo.setFoo("testFoo");
+        pojo.setBar(1);
+        ComplexPojo p1 = new ComplexPojo();
+        p1.setFoo("p1");
+        ComplexPojo p2 = new ComplexPojo();
+        p2.setFoo("p2");
+        pojo.setBan(Arrays.asList(p1, p2));
+        String s = JsonUtils.toJson(pojo);
+        Match.that(s).isEqualTo("{\"bar\":1,\"foo\":\"testFoo\",\"baz\":null,\"ban\":[{\"bar\":0,\"foo\":\"p1\",\"baz\":null,\"ban\":null},{\"bar\":0,\"foo\":\"p2\",\"baz\":null,\"ban\":null}]}");
+        ComplexPojo temp = (ComplexPojo) JsonUtils.fromJson(s, ComplexPojo.class.getName());
+        assertEquals(temp.getFoo(), "testFoo");
+        assertEquals(2, temp.getBan().size());
+        temp = JsonUtils.fromJson(s, ComplexPojo.class);
+        assertEquals(temp.getFoo(), "testFoo");
+        assertEquals(2, temp.getBan().size());
+        s = XmlUtils.toXml(pojo);
+        Match.that(s).isEqualTo("<root><bar>1</bar><foo>testFoo</foo><baz/><ban><bar>0</bar><foo>p1</foo><baz/><ban/></ban><ban><bar>0</bar><foo>p2</foo><baz/><ban/></ban></root>");
     }
 
 }
