@@ -6,7 +6,7 @@ has to be delivered in a standard, cross-platform format.
 
 ## Project
 
-Name: Karate-core (only) group 8 
+Name: Karate-core (only) group 8
 
 URL: https://github.com/karatelabs/karate/tree/master/karate-core
 
@@ -24,7 +24,7 @@ No we didn't have to install any additional tool expect maven to both build and 
 
 ### Were those tools well documented?
 
-Since the only tools required was essentially maven and maven has great documentation of how to use it, so yes we would say that the tools were well documentated 
+Since the only tools required was essentially maven and maven has great documentation of how to use it, so yes we would say that the tools were well documentated
 
 ### Were other components installed automatically by the build script?
 
@@ -32,7 +32,7 @@ Yes there were lot of dependencies defined in the pom.xml in the karate-core pro
 
 ### Did the build conclude automatically without errors?
 
-Yes the build just worked without any problem 
+Yes the build just worked without any problem
 
 ### How well do examples and tests run on your system(s)?
 
@@ -40,54 +40,59 @@ The test ran without any problems and failures, and we didn't have any problems 
 
 ## Complexity
 
-### the 5 functions with high cyclomatic complexity number (ccn) 
+### the 5 functions with high cyclomatic complexity number (ccn)
 
 #### done by: Mert Demirsü
+
 1. ServerContext::getMember@532-606@./src/main/java/com/intuit/karate/http/ServerContext.java
 2. Request::getMember@531-597@./src/main/java/com/intuit/karate/http/Request.java
 
 #### done by: Melissa Mazura
+
 4. HttpRequestBuilder::getMember@610-646@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
 5. HttpRequestBuilder::buildInternal@167-235@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
 
 #### done by: Marcus Odin
+
 7. JsonUtils::recurseJsonString@282-355@./src/main/java/com/intuit/karate/JsonUtils.java
 8. ScenarioEngine::recurseEmbeddedExpressions@1430-1503@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
 
 #### done by: Atheer Salim
+
 **Selected Funtion:** ScenarioEngine::evalKarateExpression@2160-2240@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
 
 1. The manual count of CC for this function was computed to be 13, which is much less what the lizard tool computed it to be, which was 22.
-Here the formula that was used was the once showcased in lecture 4, more on complexity. I think the computation of the cyclomatic complexity 
-is straight forward, but depending on the function and its structure, it can be harder to compute it via pen and paper since it's error-prone.
-I also don't exactly know how the lizard tool got 22, that is unclear.   
-My computation is as follows  
-Decision points:
+   Here the formula that was used was the once showcased in lecture 4, more on complexity. I think the computation of the cyclomatic complexity
+   is straight forward, but depending on the function and its structure, it can be harder to compute it via pen and paper since it's error-prone.
+   I also don't exactly know how the lizard tool got 22, that is unclear.  
+   My computation is as follows  
+   Decision points:
    ||: 3
    if: 17
    &&: 1,
-Exit points: 
-  return: 10
-  throw: 0  
-CC = Decision Points - Exit Points + 2 = 13
+   Exit points:
+   return: 10
+   throw: 0  
+   CC = Decision Points - Exit Points + 2 = 13
 
 2. This function has quite a high NLOC of 71, but I think the main reason this function has a high CC is because that it has many if/else-if/else
-statements.
+   statements.
 
 3. The purpose of this function is to evaluate any possible karate expression, it has to do a lot of things such as parsing the expression
-and evaluating them, it can evaluate Js, Json and XML. This function lies in at the heart of this testing library because the testing code that the 
-user writes is using the custom karate language. Since this function performs the actual evaluation of these expressions, 
-it makes sense that this function has high CC,
+   and evaluating them, it can evaluate Js, Json and XML. This function lies in at the heart of this testing library because the testing code that the
+   user writes is using the custom karate language. Since this function performs the actual evaluation of these expressions,
+   it makes sense that this function has high CC,
 
 4. This function does not throw anything; therefore, it won't affect when lizard is used to compute the CC for this function.
 
 5. No, there is no documentation for this function at all which actually makes it hard for potential contributors to understand what it actually
-does. The function has a good name, but that is still not enough one has to perform manually code review to understand the different parts of the function.
+   does. The function has a good name, but that is still not enough one has to perform manually code review to understand the different parts of the function.
 
 #### done by: Jonatan Tuvstedt ScenarioEngine.match()
+
 **Selected Funtion:** ScenarioEngine::match@1788-1843@./src/main/java/com/intuit/karate/core/ScenarioEngine.java
 
-1. Doing a manual CC count for this function we both got a CC of 20, compared to a CC of 21 from Lizard. As the formula used (the one in the lecture slides) is unambiguous I assume that  Lizard uses a slightly different formula, but I didn't manage to find how the count their CC.
+1. Doing a manual CC count for this function we both got a CC of 20, compared to a CC of 21 from Lizard. As the formula used (the one in the lecture slides) is unambiguous I assume that Lizard uses a slightly different formula, but I didn't manage to find how the count their CC.
 
 2. The function is not very long, having a NLOC of only 46. In fact most of the CC comes from just 2 very long if statements with 6 respectively 7 predicates.
 
@@ -96,21 +101,23 @@ does. The function has a good name, but that is still not enough one has to perf
 4. This function does not have any try catch statements that Lizard could take into account.
 
 5. No, the documentation of the function is quite minimal. While there are comments explaining some of the process, the actual overall purpose and outcome is not explained. And this combined with the fact that both return statements are further function calls makes the function hard to get an understanding of.
-  
-1. What are your results for five complex functions?
-   * Did all methods (tools vs. manual count) get the same result?
-   * Are the results clear?
-2. Are the functions just complex, or also long?
-3. What is the purpose of the functions?
-4. Are exceptions taken into account in the given measurements?
-5. Is the documentation clear w.r.t. all the possible outcomes?
+
+6. What are your results for five complex functions?
+   - Did all methods (tools vs. manual count) get the same result?
+   - Are the results clear?
+7. Are the functions just complex, or also long?
+8. What is the purpose of the functions?
+9. Are exceptions taken into account in the given measurements?
+10. Is the documentation clear w.r.t. all the possible outcomes?
 
 ## Refactoring
 
 ### Plan for refactoring complex code
+
 Estimated impact of refactoring (lower CC, but other drawbacks?).
 
 #### Atheer Salim - src/main/java/com.intuit.karate/core/ScenarioEngine.java - (function) evalKarateExpression
+
 I would say the complexity of this function is necessary as the way it is currently, because as specified this function has to parse and be able to evaluate
 any karate expression. Because of this, the function requires many if/else-if/else statements to handle the respective parts. I think the function is actually
 well written in the sense that whenever possible it does the necessary parsing and directly calls the respective target function. You could if you want split the
@@ -122,8 +129,8 @@ happening.
 
 Most of the cyclomatic complexity in `ScenarioEngine.match(Match.Type matchType, String expression, String path, String rhs)` comes from handling different eventualities for the format of the input string expression. One way to slightly reduce the complexity of the function is to move the initial string formatting to its own function, ie moving the code between lines 1789 and 1806 to their own function taking in `expression` and returning `name` and `path`. This would reduce the CC of the function by 5 down to 15, a reduction of 25%. Further reductions might be possible but will also likely make the function much harder to parse as a majority of the complexity left comes from just 2 long if statements. A small further improvement would be to merge the 3 predicates on line 1820 to a single function call `parenthesiseWrapped(name)`, reducing the CC by a further 2.
 
-
 #### Carried out refactoring (optional, P+)
+
 git diff ...
 
 ## Coverage
@@ -169,6 +176,7 @@ its output?
 3. Are the results of your tool consistent with existing coverage tools?
 
 #### Atheer Salim 3.5.1 DIY
+
 1. **What is the quality of your own coverage measurement? Does it take into account ternary operators (condition ? yes : no)
    and exceptions, if available in your language?**
 
@@ -177,7 +185,7 @@ branch for a branch when it's evaluated to true and false we take note of that a
 operator it does not consider them, but if the function would have a ternary operator then, it would probably have to be rewritten to a normal if/else
 because evaluates one expression, which is cumbersome and error-prone
 
-2. **What are the limitations of your tool?  How would the instrumentation change if you modify the program?**
+2. **What are the limitations of your tool? How would the instrumentation change if you modify the program?**
 
 My tool again is manual instrumentation so it's very limited because nothing happens automatically everything has to be done manually, so if the method would be
 changed then I would have to make sure that the manual instrumentation is correct and upto date, which is very bad since it has zero flexibility.
@@ -188,15 +196,16 @@ I have used JaCoCo and it does not show a branch coverage percentage for a speci
 is inline with what the manual instrumentation reported which was roughly 63% were out of 27 total branch paths, 17 was reached.
 
 #### Jonatan Tuvstedt
+
 Coverage result before new tests: [true, true, false, true, true, false, true, true, false, true, true, true, true, false, true, true, true, true] = 14/18 branches taken ~ 78% coverage.
 
-[Patch](https://github.com/DD2480-group8-VT24/karate/commit/e14ffe8ecfb29a5f8c3a63268f318583dbc8e37e) for Instrumented code or just run 
+[Patch](https://github.com/DD2480-group8-VT24/karate/commit/e14ffe8ecfb29a5f8c3a63268f318583dbc8e37e) for Instrumented code or just run
 
 `git diff e49ece113f688cb57d90f46a2ad47149fb67e59f e14ffe8ecfb29a5f8c3a63268f318583dbc8e37e`
 
 1. As the instrumentation is done manually it should not be a problem to add probes to ternary operators. I also think it should be possible to manually add a probes for exceptions. Quality wise I would say that it is optimal as it takes all possible branches into account (unless I have messed up).
 2. It is hugely limited as it completely relies on manual labour to check coverage and any changes to the code would result in having to redo some or all of the probes. Finally another limitation is that the changes made to introduce the probes causes some unrelated tests to fail.
-3. 
+3.
 
 ## Coverage improvement
 
@@ -206,17 +215,41 @@ Show the comments that describe the requirements for the coverage.
 
 #### Atheer Salim [link](https://github.com/DD2480-group8-VT24/karate/blob/atheer_adhoc/karate-core/atheer_branchCoverage_result)
 
+#### Jonatan Tuvstedt
+
+[true, true, false, true, true, false, true, true, false, true, true, true, true, false, true, true, true, true] = 14/18 ~ 78%
+
 ### Report of new coverage
 
 #### Atheer Salim [link](https://github.com/DD2480-group8-VT24/karate/blob/atheer_adhoc_increased_coverage/karate-core/atheer_branchCoverage_result)
 
+#### Jonatan Tuvstedt
+
+[true, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, true, true] = 17/18 ~ 94%
+
 ### Test cases added
 
-#### Atheer Salim: ```git diff atheer_adhoc_increased_coverage..atheer_adhoc```
+#### Atheer Salim: `git diff atheer_adhoc_increased_coverage..atheer_adhoc`
+
+#### Jonatan Tuvstedt:
+
+**Requirements:** `git diff 3398d67d6bb32edb8fe7e2abd0c77ad68d8f848b 3de6a18908d159ca2d2b96588a09522bd6b2a4af`
+**Tests:** `git diff c0277857d337ccff679f362b0f1bfc626d687037 3398d67d6bb32edb8fe7e2abd0c77ad68d8f848b`
+
+The branches that were untested in ScenarioEngine.match are as follows:
+
+1. The removing of a leading $ in name
+2. Extra checks when name is surrounded by parenthesis
+3. The input expression being header
+4. The case where the expression neither isXmlPathFunction, isDollarPrefixed, isJsonPath nor isXmlPath.
+
+My tests addresses 1 (`testRemovingLeadingDollarWorks()`), 2 and 4 (`testRemovingSurroundingParenthesisWorks()`) bringing the branch coverage up to ~ 94% for ScenarioEngine.match()
 
 ### Number of test cases added: two per team member (P) or at least four (P+).
 
 Atheer Salim: 2 test cases added
+
+Jonatan Tuvstedt: 2 test cases added
 
 ## Self-assessment: Way of working
 
