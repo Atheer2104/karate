@@ -146,6 +146,9 @@ happening.
 
 Most of the cyclomatic complexity in `ScenarioEngine.match(Match.Type matchType, String expression, String path, String rhs)` comes from handling different eventualities for the format of the input string expression. One way to slightly reduce the complexity of the function is to move the initial string formatting to its own function, ie moving the code between lines 1789 and 1806 to their own function taking in `expression` and returning `name` and `path`. This would reduce the CC of the function by 5 down to 15, a reduction of 25%. Further reductions might be possible but will also likely make the function much harder to parse as a majority of the complexity left comes from just 2 long if statements. A small further improvement would be to merge the 3 predicates on line 1820 to a single function call `parenthesiseWrapped(name)`, reducing the CC by a further 2.
 
+#### Marcus Odin - recurseJsonString
+A lot of the `if` statements which in turn create most of the cyclomatic complexity in `recurseJsonString(Object o, boolean pretty, StringBuilder sb, int depth, Set<Object> seen)` is checking the same thing `if (pretty)`. The ´boolean´ ´pretty´ never changes while the function is running which means that the function could be divided into two functions. One that is run if  `pretty` is `true` and one where ´pretty´ is `false`.. This would remove a lot of the cyclomatic complexity since all the `if` statements of that kind could be removed, or at least exchanged for a single `if`. One downside with this is that there could end up being duplicate code but that could probably be solved, or at least minimized by helper functions or such that do the tasks of the duplicate code. 
+
 #### Carried out refactoring (optional, P+)
 
 git diff ...
