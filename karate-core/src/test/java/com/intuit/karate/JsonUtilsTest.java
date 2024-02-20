@@ -3,13 +3,28 @@ package com.intuit.karate;
 import com.intuit.karate.core.ComplexPojo;
 import com.intuit.karate.core.SimplePojo;
 import com.intuit.karate.core.Variable;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 
 /**
  *
@@ -18,6 +33,27 @@ import org.slf4j.LoggerFactory;
 class JsonUtilsTest {
 
     static final Logger logger = LoggerFactory.getLogger(JsonUtilsTest.class);
+
+        @BeforeAll
+    public static void setUp() {
+        Coverage.branchVisited = new boolean[23];
+    }
+
+    @AfterAll
+    public static void showBranchCoverage() throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("branchCoverage_result"));
+        int totalBranchesCovered = 0;
+        for (int i = 0; i < Coverage.branchVisited.length; i++) {
+            bufferedWriter.write("Branch ID: " + i + " Covered: " + Coverage.branchVisited[i] + "\n");
+            if (Coverage.branchVisited[i]) {
+                totalBranchesCovered++;
+            }
+        }
+
+        bufferedWriter.write("branches covered %: " +  ((float) totalBranchesCovered/(float) Coverage.branchVisited.length) + "\n");
+
+        bufferedWriter.close();
+    }
 
     @Test
     void testParse() {

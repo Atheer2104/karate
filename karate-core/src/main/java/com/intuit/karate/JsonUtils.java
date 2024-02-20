@@ -56,12 +56,13 @@ import org.yaml.snakeyaml.constructor.SafeConstructor;
 import static net.minidev.json.JSONValue.defaultReader;
 import org.w3c.dom.Node;
 
+import com.intuit.karate.Coverage;
+
 /**
  *
  * @author pthomas3
  */
 public class JsonUtils {
-
     private static final Logger logger = LoggerFactory.getLogger(JsonUtils.class);
 
     private JsonUtils() {
@@ -69,6 +70,7 @@ public class JsonUtils {
     }
 
     static {
+        Coverage.branchVisited = new boolean[23];
         // ensure that even if jackson (databind?) is on the classpath, don't switch provider
         Configuration.setDefaults(new Configuration.Defaults() {
             private final JsonProvider jsonProvider = new JsonSmartJsonProvider();
@@ -281,74 +283,166 @@ public class JsonUtils {
 
     private static void recurseJsonString(Object o, boolean pretty, StringBuilder sb, int depth, Set<Object> seen) {
         if (o == null) {
+
+            // ID 0
+            Coverage.branchVisited[0] = true;
+
             sb.append("null");
         } else if (o instanceof List) {
+
+            // ID 1
+            Coverage.branchVisited[1] = true;
+
             List list = (List) o;            
-            if (list.isEmpty() || seen.add(o)) {                
+            if (list.isEmpty() || seen.add(o)) {    
+
+                // ID 2
+                Coverage.branchVisited[2] = true;       
+
                 sb.append('[');
                 if (pretty) {
+
+                    // ID 3
+                    Coverage.branchVisited[3] = true;
+
                     sb.append('\n');
                 }
                 Iterator iterator = list.iterator();
                 while (iterator.hasNext()) {
+
+                    // ID 4
+                    Coverage.branchVisited[4] = true;
+
                     Object child = iterator.next();
                     if (pretty) {
+
+                        // ID 5
+                        Coverage.branchVisited[5] = true;
+
                         pad(sb, depth + 1);
                     }
                     recurseJsonString(child, pretty, sb, depth + 1, seen);
                     if (iterator.hasNext()) {
+
+                        // ID 6
+                        Coverage.branchVisited[6] = true;
+
                         sb.append(',');
                     }
                     if (pretty) {
+
+                        // ID 7
+                        Coverage.branchVisited[7] = true;
+
                         sb.append('\n');
                     }
                 }
                 if (pretty) {
+
+                    // ID 8
+                    Coverage.branchVisited[8] = true;
+
                     pad(sb, depth);
                 }
                 sb.append(']');
             } else {
+                
+                // ID 9
+                Coverage.branchVisited[9] = true;
+
                 ref(sb, o);
             }
         } else if (o instanceof Map) {
+
+            // ID 10
+            Coverage.branchVisited[10] = true;
+
             Map<String, Object> map = (Map<String, Object>) o;
             if (map.isEmpty() || seen.add(o)) {
+
+                // ID 11
+                Coverage.branchVisited[11] = true;
+
                 sb.append('{');
                 if (pretty) {
+
+                    // ID 12
+                    Coverage.branchVisited[12] = true;
+
                     sb.append('\n');
                 }                
                 Iterator<Map.Entry<String, Object>> iterator = map.entrySet().iterator();
                 while (iterator.hasNext()) {
+
+                    // ID 13
+                    Coverage.branchVisited[13] = true;
+
                     Map.Entry<String, Object> entry = iterator.next();
                     Object key = entry.getKey(); // found a rare case where this was a boolean
                     if (pretty) {
+                        
+                        // ID 14
+                        Coverage.branchVisited[14] = true;
+
                         pad(sb, depth + 1);
                     }
                     sb.append('"').append(escapeValue(key == null ? null : key.toString())).append('"').append(':');
                     if (pretty) {
+
+                        // ID 15
+                        Coverage.branchVisited[15] = true;
+
                         sb.append(' ');
                     }
                     recurseJsonString(entry.getValue(), pretty, sb, depth + 1, seen);
                     if (iterator.hasNext()) {
+
+                        // ID 16
+                        Coverage.branchVisited[16] = true;
+
                         sb.append(',');
                     }
                     if (pretty) {
+
+                        // ID 17
+                        Coverage.branchVisited[17] = true;
+
                         sb.append('\n');
                     }
                 }
                 if (pretty) {
+
+                    // ID 18
+                    Coverage.branchVisited[18] = true;
+
                     pad(sb, depth);
                 }
                 sb.append('}');
             } else {
+
+                // ID 19
+                Coverage.branchVisited[19] = true;
+
                 ref(sb, o);
             }
         } else if (o instanceof String) {
+
+            // ID 20
+            Coverage.branchVisited[20] = true;
+
             String value = (String) o;
             sb.append('"').append(escapeValue(value)).append('"');
         } else if (o instanceof Number || o instanceof Boolean) {
+
+            // ID 21
+            Coverage.branchVisited[21] = true;
+
             sb.append(o);
         } else { // TODO custom writers ?
+
+            // ID 22
+            Coverage.branchVisited[22] = true;
+            
             String value = o.toString();
             sb.append('"').append(escapeValue(value)).append('"');
         }
