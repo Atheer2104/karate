@@ -610,36 +610,52 @@ public class HttpRequestBuilder implements ProxyObject {
     public Object getMember(String key) {
         switch (key) {
             case METHOD:
+                Coverage.visited[0] = true;
                 return METHOD_FUNCTION;
             case PATH:
+                Coverage.visited[1] = true;
                 return PATH_FUNCTION;
             case HEADER:
+                Coverage.visited[2] = true;
                 return HEADER_FUNCTION;
             case HEADERS:
+                Coverage.visited[3] = true;
                 return JsValue.fromJava(headers);
             case PARAM:
+                Coverage.visited[4] = true;
                 return PARAM_FUNCTION;
             case PARAMS:
+                Coverage.visited[5] = true;
                 return JsValue.fromJava(params);
             case BODY:
+                Coverage.visited[6] = true;
                 return BODY_FUNCTION;
             case INVOKE:
+                Coverage.visited[7] = true;
                 return INVOKE_FUNCTION;
             case GET:
+                Coverage.visited[8] = true;
                 return GET_FUNCTION;
             case POST:
+                Coverage.visited[9] = true;
                 return POST_FUNCTION;
             case PUT:
+                Coverage.visited[10] = true;
                 return PUT_FUNCTION;
             case PATCH:
+                Coverage.visited[11] = true;
                 return PATCH_FUNCTION;
             case DELETE:
+                Coverage.visited[12] = true;
                 return DELETE_FUNCTION;
             case URL:
+                Coverage.visited[13] = true;
                 return (Function<String, Object>) this::url;
             case MULTI_PART:
+                Coverage.visited[14] = true;
                 return (Function<Map<String, Object>, Object>) this::multiPart;
             default:
+                Coverage.visited[15] = true;
                 logger.warn("no such property on http object: {}", key);
                 return null;
         }
