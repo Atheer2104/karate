@@ -63,7 +63,7 @@ The test ran without any problems and failures, and we didn't have any problems 
 
    Using Lizard the result was 25 which is almist the same but one higher than my manual count. This might be a difference in how the tool counts compared how I did it manually. 
 
-   2. The function has an NLOC of 74. This means that there is about 1 CC per 3 NLOC.
+   2. The function has an NLOC of 74. This means that there is about 1 CC per 3 NLOC. This feels like a high CC per line which means the function is not very long but has a high CC.
 
    3. There is no function level documentation for this functions which makes it harder to dicern the purspose. It seems to take an object of a list, map or string and recursevily and convert it to a string in Json format.
 
