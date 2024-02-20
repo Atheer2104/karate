@@ -126,10 +126,20 @@ git diff ...
 
 ### Tools
 
-Document your experience in using a "new"/different coverage tool.
+#### Document your experience in using a "new"/different coverage tool.
 
-How well was the tool documented? Was it possible/easy/difficult to
-integrate it with your build environment?
+The third-party coverage tool that we used was JaCoCo, the experience was good when using the tool, it was easy to set up
+and get started using it, this was mostly because of IntelliJ IDEA IDE for Java since you only change a few settings
+highlighting that you want to use JaCoCo and that you want to measure the branch coverage. Then can run the test with coverage
+enabled and it will show the results in a separate window. JaCoCo showed the branch coverage % but only for the whole .java file,
+one couldn't see the % for a specific function. However in the IDE when viewing the actual code it marked code lines that have been
+executed with green and those that haven't been executed with red which was good and very helpful.
+
+#### How well was the tool documented? Was it possible/easy/difficult to integrate it with your build environment?
+
+JaCoCo has good documentation on how to use it as a tool whilst also highlighting the features that it supports.
+As mentioned earlier the tool was easy to set up and use in the build environment and again this was because of IntelliJ
+it made it easy to use the tool, and run the test with coverage instrumentation enabled.
 
 ### Your own coverage tool
 
