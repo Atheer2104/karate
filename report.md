@@ -229,7 +229,9 @@ Coverage result before new tests: [true, true, false, true, true, false, true, t
 10/34 branches were taken before the new tests were implemented. [link](https://github.com/karatelabs/karate/compare/master...DD2480-group8-VT24:karate:marodi-adhoc#diff-ed7b53f024c5cc83536c8b757c24f020cc382ee59079a462fc7b3d62933682bb)
 1. There are no ternary operators in the function but it should be able to be taken into account if that was the case. The quality should be good since it is done manually.
 
-2. If you modify the program or add or remove branches for example then you would have to manually remake everything that was affected. It is also important to not accidentally affect other parts of the program just to check the coverage.
+2. If you modify the program or add or remove branches for example then you would have to manually remake everything that was affected. It could also be prone to suffer from human error, a branch can be missed from manully adding the coverage checking.
+
+3. I used JaCoCo to compare and the biggest difference is that it is possible to see exactly which lines of code that has been covered when looking in the IDE. When checking only for the coverage in branches the result was the same for JaCoCo and the DIY.
 
 ## Coverage improvement
 
