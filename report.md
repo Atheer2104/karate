@@ -118,6 +118,10 @@ function into smaller parts, but I don't think that would be a good idea since i
 it would not bring any benefits. I'd rather have the function be longer and have everything in the same place, it makes it easier to actually understand what is
 happening.
 
+#### Jonatan Tuvstedt - ScenarioEngine.match
+
+Most of the cyclomatic complexity in `ScenarioEngine.match(Match.Type matchType, String expression, String path, String rhs)` comes from handling different eventualities for the format of the input string expression. One way to slightly reduce the complexity of the function is to move the initial string formatting to its own function, ie moving the code between lines 1789 and 1806 to their own function taking in `expression` and returning `name` and `path`. This would reduce the CC of the function by 5 down to 15, a reduction of 25%. Further reductions might be possible but will also likely make the function much harder to parse as a majority of the complexity left comes from just 2 long if statements. A small further improvement would be to merge the 3 predicates on line 1820 to a single function call `parenthesiseWrapped(name)`, reducing the CC by a further 2.
+
 
 #### Carried out refactoring (optional, P+)
 git diff ...
