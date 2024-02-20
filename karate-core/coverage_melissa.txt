@@ -1,4 +1,4 @@
-Branch ID: 0 Covered: false
+Branch ID: 0 Covered: true
 Branch ID: 1 Covered: false
 Branch ID: 2 Covered: false
 Branch ID: 3 Covered: false
@@ -13,5 +13,5 @@ Branch ID: 11 Covered: false
 Branch ID: 12 Covered: false
 Branch ID: 13 Covered: false
 Branch ID: 14 Covered: false
-Branch ID: 15 Covered: false
-branches covered %: 0.0
+Branch ID: 15 Covered: true
+branches covered %: 0.125
