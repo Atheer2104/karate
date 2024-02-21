@@ -1,9 +1,5 @@
 # Report for assignment 3
 
-This is a template for your report. You are free to modify it as needed.
-It is not required to use markdown for your report either, but the report
-has to be delivered in a standard, cross-platform format.
-
 ## Project
 
 Name: Karate-core (only) group 8
@@ -130,15 +126,7 @@ CC = Decision Points - Exit Points + 2 = 2
 4. This function does not have any try catch statements that Lizard could take into account.
 
 5. No, the documentation of the function is quite minimal. While there are comments explaining some of the process, the actual overall purpose and outcome is not explained. And this combined with the fact that both return statements are further function calls makes the function hard to get an understanding of.
-
-6. What are your results for five complex functions?
-   - Did all methods (tools vs. manual count) get the same result?
-   - Are the results clear?
-7. Are the functions just complex, or also long?
-8. What is the purpose of the functions?
-9. Are exceptions taken into account in the given measurements?
-10. Is the documentation clear w.r.t. all the possible outcomes?
-
+   
 ## Refactoring
 
 ### Plan for refactoring complex code
@@ -190,17 +178,6 @@ As mentioned earlier the tool was easy to set up and use in the build environmen
 it made it easy to use the tool, and run the test with coverage instrumentation enabled.
 
 ### Your own coverage tool
-
-Show a patch (or link to a branch) that shows the instrumented code to
-gather coverage measurements.
-
-The patch is probably too long to be copied here, so please add
-the git command that is used to obtain the patch instead:
-
-git diff ...
-
-What kinds of constructs does your tool support, and how accurate is
-its output?
 
 #### Atheer Salim [link](https://github.com/DD2480-group8-VT24/karate/commit/f88f3dc146acbba0bcecdde040ce79108643f129)
 
@@ -259,7 +236,6 @@ Coverage result before new tests: [true, true, false, true, true, false, true, t
 2. If the program were to change, this tool would have to change too, as it does not take into account changes. If the function changes, this tool would probably not work well anymore.
 
 3. As this function has no tests written yet, the Cobertura tool also had zero percentage coverage, which is the same as my coverage tool.
-
 
 ## Coverage improvement
 
