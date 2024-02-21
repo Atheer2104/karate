@@ -1,7 +1,16 @@
 package com.intuit.karate.http;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.graalvm.polyglot.Value;
+
+
 
 import com.intuit.karate.core.ScenarioEngine;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -16,6 +25,26 @@ class HttpRequestBuilderTest {
     static final Logger logger = LoggerFactory.getLogger(HttpRequestBuilderTest.class);
 
     HttpRequestBuilder http;
+
+    @BeforeAll
+    public static void setUp() {
+        Coverage.visited = new boolean[16];
+    }
+
+    @AfterAll
+    public static void showBranchCoverage() throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("coverage_melissa.txt"));
+        int totalBranchesCovered = 0;
+        for (int i = 0; i < Coverage.visited.length; i++) {
+            bufferedWriter.write("Branch ID: " + i + " Covered: " + Coverage.visited[i] + "\n");
+            if (Coverage.visited[i]) {
+                totalBranchesCovered++;
+            }
+        }
+        bufferedWriter.write("branches covered %: " +  ((float) totalBranchesCovered/ (float) Coverage.visited.length) + "\n");
+        bufferedWriter.close();
+    }
+
 
     @BeforeEach
     void beforeEach() {
