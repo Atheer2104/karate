@@ -49,8 +49,20 @@ The test ran without any problems and failures, and we didn't have any problems 
 
 #### done by: Melissa Mazura
 
-4. HttpRequestBuilder::getMember@610-646@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
-5. HttpRequestBuilder::buildInternal@167-235@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
+**Selected Funtion:** HttpRequestBuilder::getMember@610-646@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
+1. When counting the cyclomatic complexity, this function's result was 2, whereas the Lizard tool showed 16. As the function that was used for this computation was the same as the one shown in lecture 4, it becomes clear that the function's results differ.
+The computation is as follows:
+Switch statements and the default statemtn: 16
+Return statements: 16
+CC = Decision Points - Exit Points + 2 = 2
+
+2. This function's complexity is due to its massive switch statement that it consists of, whith a rather low NLOG of 37.
+
+3. This function is used to override the getMember function. It takes a key as input - which ranges from simply METHOD to PUT, and based on that input it will return a certain function of key value. If this key does not match any of the 15 cases, it will return a warn message into the logger and will return zero. Overall, this function receives properties and responses associated with an HTTP data request.
+
+4. In this function, there are no exceptions that can be found. The only thing e have is a default case that will return zero if the input string does not match any case.
+
+5. For this function, there can be found no documentation.
 
 #### done by: Marcus Odin
 
@@ -149,6 +161,11 @@ Most of the cyclomatic complexity in `ScenarioEngine.match(Match.Type matchType,
 #### Marcus Odin - recurseJsonString
 A lot of the `if` statements which in turn create most of the cyclomatic complexity in `recurseJsonString(Object o, boolean pretty, StringBuilder sb, int depth, Set<Object> seen)` is checking the same thing `if (pretty)`. The `boolean pretty` never changes while the function is running which means that the function could be divided into two functions. One that is run if  `pretty` is `true` and one where `pretty` is `false`.. This would remove a lot of the cyclomatic complexity since all the `if` statements of that kind could be removed, or at least exchanged for a single `if`. One downside with this is that there could end up being duplicate code but that could probably be solved, or at least minimized by helper functions or such that do the tasks of the duplicate code. 
 
+
+#### Melissa Mazura - HttpRequestBuilder::getMember@610-646@./src/main/java/com/intuit/karate/http/HttpRequestBuilder.java
+This function is neccessarily as complex as it is shown in the function. Due to the nature of said function - simply to have 16 if cases in it - it does exactly what it is supposed to. Of course, we could divide the if statements into smaller ones, but I do not believe that this will either change the complexity or make it more readable in the end. The if statements all correspond to the same problem, and it would be more difficult to separate these different clauses into different functions.
+
+
 #### Carried out refactoring (optional, P+)
 
 git diff ...
@@ -235,6 +252,14 @@ Coverage result before new tests: [true, true, false, true, true, false, true, t
 2. If you modify the program or add or remove branches for example then you would have to manually remake everything that was affected. It could also be prone to suffer from human error, a branch can be missed from manully adding the coverage checking.
 
 3. I used JaCoCo to compare and the biggest difference is that it is possible to see exactly which lines of code that has been covered when looking in the IDE. When checking only for the coverage in branches the result was the same for JaCoCo and the DIY.
+
+#### Melissa Mazura 3.5.1 DIY
+1. My coverage tool should be fairly accurate, because it manually goes through every single branch and checks its coverage manually. If this branch is visited during the tests, this will be marked as visited, which in turn will show up on the branch coverage. 
+
+2. If the program were to change, this tool would have to change too, as it does not take into account changes. If the function changes, this tool would probably not work well anymore.
+
+3. As this function has no tests written yet, the Cobertura tool also had zero percentage coverage, which is the same as my coverage tool.
+
 
 ## Coverage improvement
 
