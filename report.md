@@ -245,6 +245,8 @@ Show the comments that describe the requirements for the coverage.
 
 #### Atheer Salim [link](https://github.com/DD2480-group8-VT24/karate/blob/atheer_adhoc/karate-core/atheer_branchCoverage_result)
 
+#### Melissa Mazura [link](https://github.com/DD2480-group8-VT24/karate/core/atheer_adhoc/karate-core/coverage_melissa.txt)
+
 #### Jonatan Tuvstedt
 
 [true, true, false, true, true, false, true, true, false, true, true, true, true, false, true, true, true, true] = 14/18 ~ 78%
@@ -254,6 +256,8 @@ Show the comments that describe the requirements for the coverage.
 ### Report of new coverage
 
 #### Atheer Salim [link](https://github.com/DD2480-group8-VT24/karate/blob/atheer_adhoc_increased_coverage/karate-core/atheer_branchCoverage_result)
+
+#### Melissa Mazura [link](https://github.com/DD2480-group8-VT24/karate/core/atheer_adhoc/karate-core/coverage_melissa.txt)
 
 #### Jonatan Tuvstedt
 
@@ -283,6 +287,8 @@ My tests addresses 1 (`testRemovingLeadingDollarWorks()`), 2 and 4 (`testRemovin
 
 The tests I added were `testNull()` and `testList()`. I added these tests since the function I was working on had 3 if/else statements at the highest level but only one of them were accesed so my tests gets some coverage on the other 2 aswell.
 
+#### Melissa Mazura
+I have added two tests in karate-core/src/test/java/com/intuit/karate/http/HttpRequestBuilderTest.java. These two test cases are called testGetMemberURL and testGetMemberDefaultCase. These two test cases will make sure that two branches are tested in the code.
 ### Number of test cases added: two per team member (P) or at least four (P+).
 
 Atheer Salim: 2 test cases added
@@ -290,6 +296,8 @@ Atheer Salim: 2 test cases added
 Jonatan Tuvstedt: 2 test cases added
 
 Marcus Odin: 2 test cases added
+
+Melissa Mazura: 2 test cases added
 
 ## Self-assessment: Way of working
 
